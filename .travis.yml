@@ -9,5 +9,5 @@ cache:
 install: true
 
 script:
- - mvn -f com.examples.myproject/pom.xml clean verify
+ - mvn -f com.examples.myproject/pom.xml -Pjacoco clean verify coveralls:report
 
