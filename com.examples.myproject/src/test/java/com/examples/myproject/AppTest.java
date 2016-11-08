@@ -20,6 +20,6 @@ public class AppTest {
 
 	@org.junit.Test
 	public void testSayHello() {
-		assertEquals("Hallo", app.sayHello());
+		assertEquals("Hello", app.sayHello());
 	}
 }
