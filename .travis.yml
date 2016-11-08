@@ -2,9 +2,11 @@ sudo: false
 
 language: java
 
-jdk:
-  - oraclejdk8
-  - openjdk6
+matrix:
+  include:
+    - jdk: oraclejdk8
+      env: WITH_COVERALLS=true
+    - jdk: openjdk6
 
 cache:
   directories:
@@ -13,5 +15,10 @@ cache:
 install: true
 
 script:
- - mvn -f com.examples.myproject/pom.xml -Pjacoco clean verify coveralls:report
+ - if [ "$WITH_COVERALLS" == "true" ];
+   then
+     mvn -f com.examples.myproject/pom.xml clean verify -Pjacoco coveralls:report;
+   else
+     mvn -f com.examples.myproject/pom.xml clean verify;
+   fi
 
